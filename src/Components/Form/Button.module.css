@@ -1,0 +1,20 @@
+.button {
+  border: none;
+  background: var(--rosa-claro);
+  color: var(--branco-rosado);
+  font-weight: bold;
+  padding: 0.5rem;
+  min-width: 6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.button:hover {
+  background-color: var(--rosa-claro2);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}

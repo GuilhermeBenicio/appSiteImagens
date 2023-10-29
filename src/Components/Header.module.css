@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.nav .logo {
+  display: inline-block;
+  color: #333;
+}
+
+.nav .login {
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.nav .login::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../Assets/user.svg') no-repeat center center;
+  margin-left: 0.3rem;
+  position: relative;
+  top: -1px;
+}
