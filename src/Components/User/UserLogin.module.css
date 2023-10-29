@@ -1,0 +1,38 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 100000;
+  padding: 2rem 4rem 2rem 4rem;
+}
+
+.card {
+  background-color: white;
+  width: 100vw;
+  padding: 2rem 4rem;
+}
+
+.card form {
+  margin-top: 2rem;
+}
+
+.card .input {
+  width: 100%;
+  border: none;
+  padding: 0.8rem;
+  border: 1px solid #eee;
+  background: white;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.input:focus,
+.input:hover {
+  outline: 0;
+  background: white;
+  box-shadow: 0 0 0 3px var(--branco-rosado);
+}

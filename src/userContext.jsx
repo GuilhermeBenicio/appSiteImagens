@@ -47,6 +47,7 @@ export const UserStorage = ({ children }) => {
       <userContext.Provider
         value={{
           userLogin,
+          login,
           data,
           error,
           setErrorContext,

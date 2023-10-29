@@ -1,25 +1,23 @@
 import React from 'react';
-import styles from './Input.module.css';
+import styles from './TextArea.module.css';
 
-const Input = ({ label, id, type, value, error, onChange, onBlur, accept }) => {
+const TextArea = ({ label, id, value, error, onChange, onBlur }) => {
   return (
     <div className={styles.wrapper}>
       <label htmlFor={id} className={styles.label}>
         {label}
       </label>
-      <input
-        className={styles.input}
-        type={type}
+      <textarea
+        className={styles.textarea}
+        label={label}
         id={id}
         name={id}
         value={value}
         onChange={onChange}
-        onBlur={onBlur}
-        accept={accept}
-      />
+      ></textarea>
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };
 
-export default Input;
+export default TextArea;

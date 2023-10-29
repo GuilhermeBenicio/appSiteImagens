@@ -5,42 +5,35 @@ import Button from '../Form/Button';
 import useForm from '../../Hooks/useForm';
 import Error from '../Helper/Error';
 import { Link } from 'react-router-dom';
-import format from 'date-fns/format';
-import { parseISO } from 'date-fns';
 import { userContext } from '../../userContext';
 import { USER_REGISTER } from '../../api';
+import useFetch from '../../Hooks/useFetch';
 
 const LoginCreate = () => {
   const usuario = useForm();
   const email = useForm('email');
   const dataNasc = useForm();
   const senha = useForm();
-  const [data, setData] = React.useState(null);
 
-  const { request, userLogin, error, setErrorContext, loading } =
-    React.useContext(userContext);
+  const { userLogin } = React.useContext(userContext);
+  const { loading, error, request } = useFetch();
 
   const dataAtual = new Date();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const iso = parseISO(dataNasc.value);
-    const dataFormatada = format(iso, 'dd/MM/yyyy');
 
     const { url, options } = USER_REGISTER({
       usuario: usuario.value,
       email: email.value,
       senha: senha.value,
-      dataNasc: dataFormatada,
+      dataNasc: dataNasc.value,
       dataAtual,
     });
 
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(json);
-    /*setTimeout(() => {
-      userLogin(email.value.trim(), senha.value);
-    }, 50);*/
+    const { response, json } = await request(url, options);
+    console.log(response, json);
+    if (response.ok) userLogin(email.value.trim(), senha.value);
   }
 
   return (
@@ -72,15 +65,12 @@ const LoginCreate = () => {
         {loading ? (
           <Button disabled>Carregando...</Button>
         ) : (
-          <Button>Entrar</Button>
+          <Button>Cadastrar</Button>
         )}
 
         <fieldset className="fieldset">
-          {error && <Error error={error} />}
-          Já possui uma conta?{' '}
-          <Link to="/login" onClick={() => setErrorContext(null)}>
-            Clique Aqui
-          </Link>
+          <Error error={error} />
+          Já possui uma conta? <Link to="/login">Clique Aqui</Link>
         </fieldset>
       </form>
     </section>

@@ -1,0 +1,12 @@
+.textarea {
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.textarea:focus,
+.textarea:hover {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--branco-rosado);
+}

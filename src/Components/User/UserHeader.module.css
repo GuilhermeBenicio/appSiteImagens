@@ -1,0 +1,14 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.header h1 {
+  margin-bottom: 0;
+  max-width: 290px;
+  font-size: 3rem;
+}
