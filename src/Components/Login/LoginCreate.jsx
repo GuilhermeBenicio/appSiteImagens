@@ -32,7 +32,6 @@ const LoginCreate = () => {
     });
 
     const { response, json } = await request(url, options);
-    console.log(response, json);
     if (response.ok) userLogin(email.value.trim(), senha.value);
   }
 

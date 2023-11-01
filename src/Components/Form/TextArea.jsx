@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TextArea.module.css';
 
-const TextArea = ({ label, id, value, error, onChange, onBlur }) => {
+const TextArea = ({ label, id, value, onChange }) => {
   return (
     <div className={styles.wrapper}>
       <label htmlFor={id} className={styles.label}>
@@ -15,7 +15,6 @@ const TextArea = ({ label, id, value, error, onChange, onBlur }) => {
         value={value}
         onChange={onChange}
       ></textarea>
-      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

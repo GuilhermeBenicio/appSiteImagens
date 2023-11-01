@@ -15,7 +15,6 @@ const LoginForm = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(senha.value);
     if (email.validate() && senha.validate()) {
       userLogin(email.value.trim(), senha.value);
     }

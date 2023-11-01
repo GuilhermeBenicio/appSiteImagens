@@ -6,14 +6,12 @@ import TextArea from '../Form/TextArea';
 import useForm from '../../Hooks/useForm';
 import { PHOTO_POST, UPLOAD_PHOTO_POST } from '../../api';
 import { userContext } from '../../userContext';
-import parseJSON from 'date-fns/fp/parseJSON/index';
 
-const UserLogin = () => {
+const UserLogin = ({ setModalFoto }) => {
   const [file, setFile] = React.useState({});
-  const [textArea, setTextArea] = React.useState(null);
-  const txtArea = useForm();
   const { error, loading, request } = useFetch();
-  const { data } = React.useContext(userContext);
+  const { dataUser } = React.useContext(userContext);
+  const txtArea = useForm();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,12 +21,13 @@ const UserLogin = () => {
 
     const { url, options } = UPLOAD_PHOTO_POST(formData, token);
     const { response, json } = await request(url, options);
-    if (response.ok) await sendFinalPost(json.url, token, data._id);
+    if (response.ok) await sendFinalPost(json.url, token, dataUser._id);
   }
 
   async function sendFinalPost(urlIMG, token, id) {
     const { url, options } = PHOTO_POST(
       {
+        usuario: dataUser.usuario,
         pathFotoPost: urlIMG,
         descricaoPost: txtArea.value,
       },
@@ -40,19 +39,21 @@ const UserLogin = () => {
 
   function handleChange({ target }) {
     setFile({
+      preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
-    if (file) setTextArea(true);
+  }
+
+  function handleOutsideClick(event) {
+    if (event.target === event.currentTarget) setModalFoto(false);
   }
 
   return (
-    <section className={styles.modal}>
-      <div className={styles.card}>
-        <h1 className="titulo">Postar Foto</h1>
+    <section className={`${styles.modal}`} onClick={handleOutsideClick}>
+      <div className={`${styles.card} animeModal`}>
         <form onSubmit={handleSubmit}>
-          {textArea && (
-            <TextArea id="textarea" label="Descrição da foto" {...txtArea} />
-          )}
+          <h1 className="titulo">Postar Foto</h1>
+          <TextArea id="textarea" label="Descrição da foto" {...txtArea} />
           <input
             className={styles.input}
             type="file"
@@ -60,10 +61,23 @@ const UserLogin = () => {
             id="file"
             accept="image/jpeg"
             onChange={handleChange}
+            required
           />
-
-          <Button>Postar</Button>
+          {loading ? (
+            <Button disabled>Enviando...</Button>
+          ) : (
+            <Button>Postar</Button>
+          )}
+          {error && <Error error={error} />}
         </form>
+        <div>
+          {file.preview && (
+            <div
+              className={styles.preview}
+              style={{ backgroundImage: `url('${file.preview}')` }}
+            ></div>
+          )}
+        </div>
       </div>
     </section>
   );

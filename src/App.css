@@ -53,6 +53,10 @@ a {
   margin: 0 auto;
 }
 
+.mainContainer {
+  margin-top: 4rem;
+}
+
 .titulo {
   display: inline-block;
   font-size: 4rem;
@@ -94,6 +98,20 @@ a {
 @keyframes animeLeft {
   to {
     opacity: initial;
+    transform: initial;
+  }
+}
+
+.animeModal {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+  to {
+    opacity: initial;
+    transition: initial;
     transform: initial;
   }
 }

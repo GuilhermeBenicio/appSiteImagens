@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import { userContext } from '../userContext';
 
 const Header = () => {
-  const { data } = React.useContext(userContext);
+  const { dataUser } = React.useContext(userContext);
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <Link className={styles.logo} to="/">
           <h1>Logotipo</h1>
         </Link>
-        {data ? (
-          <Link className={styles.login} to="/login">
-            {data.usuario}
+        {dataUser ? (
+          <Link className={styles.login} to="/conta">
+            {dataUser.usuario}
           </Link>
         ) : (
           <Link className={styles.login} to="/login">

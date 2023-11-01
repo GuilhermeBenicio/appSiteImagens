@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const userContext = React.createContext();
 
 export const UserStorage = ({ children }) => {
-  const [data, setData] = React.useState(null);
+  const [dataUser, setDataUser] = React.useState(null);
   const [error, setErrorContext] = React.useState(null);
   const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -16,7 +16,7 @@ export const UserStorage = ({ children }) => {
     const { url, options } = USER_GET(token, email);
     const response = await fetch(url, options);
     const json = await response.json();
-    setData(json);
+    setDataUser(json);
     setLogin(true);
   }
 
@@ -48,7 +48,7 @@ export const UserStorage = ({ children }) => {
         value={{
           userLogin,
           login,
-          data,
+          dataUser,
           error,
           setErrorContext,
           loading,
