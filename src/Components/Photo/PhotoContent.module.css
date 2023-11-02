@@ -4,7 +4,7 @@
   border-radius: 0.2rem;
   background: white;
   display: grid;
-  grid-template-columns: 36rem 20rem;
+  grid-template-columns: 1fr 20rem;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
   transform: scale(0.8);
@@ -20,11 +20,30 @@
 
 .details {
   padding: 2rem 2rem 0 2rem;
-  height: 500px;
+  height: 490px;
 }
 
 .img {
   grid-row: 1 / 4;
+}
+
+.author {
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authorDelete {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authorDelete span {
+  opacity: 0.5;
 }
 
 .author {
@@ -42,6 +61,7 @@
 .curtidas {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .curtidas::before {

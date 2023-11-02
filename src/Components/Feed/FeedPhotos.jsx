@@ -28,6 +28,7 @@ const FeedPhotos = ({ setModalPhoto }) => {
               key={photo._id}
               photo={photo}
               setModalPhoto={setModalPhoto}
+              data={data}
             />
           )),
         )}

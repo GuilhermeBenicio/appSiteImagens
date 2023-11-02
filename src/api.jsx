@@ -125,3 +125,43 @@ export function GET_POST_ID(id) {
     },
   };
 }
+
+export function CREATE_COMMENT(body, id, token) {
+  return {
+    url: `${URL}comment/create/${id}`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function POST_DELETE(id, token) {
+  return {
+    url: `${URL}post/remove/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    },
+  };
+}
+
+export function POST_LIKE(body, id, token) {
+  return {
+    url: `${URL}post/like/${id}`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

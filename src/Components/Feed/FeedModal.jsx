@@ -6,7 +6,6 @@ import { GET_POST_ID } from '../../api';
 import PhotoContent from '../Photo/PhotoContent';
 
 const FeedModal = ({ photo, setModalPhoto }) => {
-  console.log(photo);
   const { data, error, loading, request } = useFetch();
 
   React.useEffect(() => {
@@ -24,7 +23,7 @@ const FeedModal = ({ photo, setModalPhoto }) => {
     <div className={styles.modal} onClick={handleOutsideClick}>
       {error && <Error error={error} />}
       {loading && 'Carregando...'}
-      {data && <PhotoContent data={data} />}
+      {data && <PhotoContent data={data} setModalPhoto={setModalPhoto} />}
     </div>
   );
 };

@@ -8,7 +8,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   return (
     <li className={styles.photo} onClick={handleClick}>
       <img src={photo.pathFotoPost} />
-      <span>{photo.curtidas.length}</span>
+      <span>Visualizar</span>
     </li>
   );
 };

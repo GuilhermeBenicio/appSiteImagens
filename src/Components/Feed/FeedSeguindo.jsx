@@ -23,8 +23,6 @@ const FeedSeguindo = () => {
     });
   }, [request]);
 
-  console.log(data);
-
   return (
     <ul className={`${styles.feed} mainContainer animeLeft`}>
       {foto &&

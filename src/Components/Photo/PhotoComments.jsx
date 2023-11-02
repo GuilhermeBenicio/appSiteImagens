@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './PhotoComments.module.css';
+import { userContext } from '../../userContext';
+import PhotoCommentsForm from './PhotoCommentsForm';
 
 const PhotoComments = ({ id, comments }) => {
+  const { login, dataUser } = React.useContext(userContext);
+  const [commentsUser, setCommentsUser] = React.useState(() => comments);
   return (
     <>
       <ul className={styles.comments}>
-        {comments &&
-          comments.map((comentario) => (
-            <li
-              key={comentario.comentarioTexto}
-              className={styles.comentarioTexto}
-            >
+        {commentsUser &&
+          commentsUser.map((comentario, index) => (
+            <li key={index} className={styles.comentarioTexto}>
               <b className={styles.usuario}>{comentario.usuario}:</b>
               <span className={styles.comentario}>
                 {comentario.comentarioTexto}
@@ -18,10 +19,13 @@ const PhotoComments = ({ id, comments }) => {
             </li>
           ))}
       </ul>
-      <textarea
-        className={styles.textarea}
-        placeholder="Escreva um comentário aqui..."
-      ></textarea>
+      {login && (
+        <PhotoCommentsForm
+          usuario={dataUser.usuario}
+          id={id}
+          setCommentsUser={setCommentsUser}
+        />
+      )}
     </>
   );
 };

@@ -7,7 +7,6 @@
 
 .photo img {
   grid-area: 1 / 1;
-  height: 100%;
 }
 
 .photo span {
@@ -23,11 +22,11 @@
 
 .photo span::before {
   content: '';
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 10px;
   display: inline-block;
   margin-right: 0.25rem;
-  background: url('../../assets/like.svg') no-repeat;
+  background: url('../../assets/visualizacao.svg') no-repeat;
 }
 
 .photo:hover span {

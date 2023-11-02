@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './FeedUserPhotosItem.module.css';
 
-const FeedUserPhotosItem = ({ photo }) => {
-  console.log(photo);
+const FeedUserPhotosItem = ({ photo, setModalPhoto }) => {
+  function handleClick() {
+    setModalPhoto(photo);
+  }
   return (
-    <li className={styles.photo}>
+    <li className={styles.photo} onClick={handleClick}>
       <img src={photo.pathFotoPost} />
-      <span>{photo.curtidas.length}</span>
+      <span>Visualizar</span>
     </li>
   );
 };

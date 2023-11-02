@@ -5,7 +5,7 @@ import { USER_GET_PHOTO } from '../../../api';
 import FeedUserPhotosItem from './FeedUserPhotosItem';
 import styles from './FeedUserPhotos.module.css';
 
-const FeedUserPhotos = () => {
+const FeedUserPhotos = ({ setModalPhoto }) => {
   const { dataUser } = React.useContext(userContext);
   const { data, request, loading, error } = useFetch();
 
@@ -24,7 +24,11 @@ const FeedUserPhotos = () => {
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {data.posts.map((photo) => (
-          <FeedUserPhotosItem key={photo._id} photo={photo} />
+          <FeedUserPhotosItem
+            key={photo._id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </ul>
     );

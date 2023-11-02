@@ -12,6 +12,17 @@ export const UserStorage = ({ children }) => {
   const [request, setRequest] = React.useState(false);
   const navigate = useNavigate();
 
+  React.useEffect(() => {}, []);
+
+  const userLogout = React.useCallback(async function () {
+    setDataUser(null);
+    setErrorContext(null);
+    setLoading(false);
+    setLogin(false);
+    window.localStorage.removeItem('token');
+    navigate('/login');
+  }, []);
+
   async function getUser(token, email) {
     const { url, options } = USER_GET(token, email);
     const response = await fetch(url, options);
@@ -53,6 +64,7 @@ export const UserStorage = ({ children }) => {
           setErrorContext,
           loading,
           request,
+          userLogout,
         }}
       >
         {children}
