@@ -39,11 +39,7 @@ const PhotoContent = ({ data, setModalPhoto }) => {
           ) : (
             <p className={styles.author}>
               <Link to={`/perfil/${usuario}`}>@{usuario}</Link>
-              <PhotoContentCurtida
-                curtidas={curtidas}
-                usuario={dataUser.usuario}
-                _id={_id}
-              />
+              <PhotoContentCurtida curtidas={curtidas} _id={_id} />
             </p>
           )}
           <p className={styles.descricaoPost}>{descricaoPost}</p>

@@ -1,0 +1,22 @@
+.headerProfile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 1rem 0.5rem;
+}
+
+.fieldset {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.user {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.infoUser {
+  display: flex;
+  margin-top: 1rem;
+}

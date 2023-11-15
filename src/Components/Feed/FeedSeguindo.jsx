@@ -15,7 +15,7 @@ const FeedSeguindo = () => {
   React.useEffect(() => {
     dataUser.seguindo.forEach((users) => {
       async function get_user() {
-        const { url, options } = GET_POST_USER(token, users);
+        const { url, options } = GET_POST_USER(users);
         const { response, json } = await request(url, options);
         if (response.ok) setFoto((prevFoto) => [...prevFoto, json]);
       }

@@ -55,13 +55,16 @@ a {
 }
 
 .mainContainer {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .titulo {
   display: inline-block;
   font-size: 4rem;
-  margin-bottom: 2rem;
+}
+
+.espaco {
+  margin-bottom: 15px;
 }
 
 .titulo::after {

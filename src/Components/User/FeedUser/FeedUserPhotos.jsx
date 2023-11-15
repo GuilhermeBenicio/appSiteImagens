@@ -4,15 +4,17 @@ import useFetch from '../../../Hooks/useFetch';
 import { USER_GET_PHOTO } from '../../../api';
 import FeedUserPhotosItem from './FeedUserPhotosItem';
 import styles from './FeedUserPhotos.module.css';
+import Error from '../../Helper/Error';
 
-const FeedUserPhotos = ({ setModalPhoto }) => {
+const FeedUserPhotos = ({ setModalPhoto, user }) => {
   const { dataUser } = React.useContext(userContext);
   const { data, request, loading, error } = useFetch();
+  const User = user ? user : dataUser.usuario;
 
   React.useEffect(() => {
     async function fetchPhotos() {
       const token = window.localStorage.getItem('token');
-      const { url, options } = USER_GET_PHOTO(dataUser.usuario, token);
+      const { url, options } = USER_GET_PHOTO(User, token);
       const { response, json } = await request(url, options);
     }
     fetchPhotos();

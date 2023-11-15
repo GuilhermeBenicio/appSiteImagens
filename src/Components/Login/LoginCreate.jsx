@@ -37,7 +37,7 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
-      <h1 className="titulo">Cadastrar</h1>
+      <h1 className="titulo espaco">Cadastrar</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input
           label="usuário"

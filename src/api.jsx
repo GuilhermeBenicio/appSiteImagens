@@ -37,13 +37,13 @@ export function USER_GET_USUARIO(token, usuario) {
   };
 }
 
-export function GET_POST_USER(token, usuario) {
+export function GET_POST_USER(usuario) {
   return {
     url: `${URL}post/list/user/${usuario}`,
     options: {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
       },
     },
   };
@@ -162,6 +162,19 @@ export function POST_LIKE(body, id, token) {
         Authorization: 'Bearer ' + token,
       },
       body: JSON.stringify(body),
+    },
+  };
+}
+
+export function USER_FOLLOW(usuarioLogado, usuarioSeguir, token) {
+  return {
+    url: `${URL}follow/${usuarioLogado}/${usuarioSeguir}`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
     },
   };
 }

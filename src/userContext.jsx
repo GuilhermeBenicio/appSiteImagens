@@ -12,7 +12,31 @@ export const UserStorage = ({ children }) => {
   const [request, setRequest] = React.useState(false);
   const navigate = useNavigate();
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    async function autoLogin() {
+      const token = window.localStorage.getItem('token');
+      const email = window.localStorage.getItem('email');
+
+      if (token) {
+        try {
+          setLoading(true);
+          await getUser(token, email); // Obtém as informações do usuário usando o token
+          setRequest(true);
+          if (window.location.pathname === '/login') {
+            navigate('/conta');
+          }
+        } catch (error) {
+          setErrorContext(error.message);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+      }
+    }
+
+    autoLogin();
+  }, []);
 
   const userLogout = React.useCallback(async function () {
     setDataUser(null);
@@ -42,6 +66,7 @@ export const UserStorage = ({ children }) => {
 
       const json = await response.json();
       window.localStorage.setItem('token', json.access_token);
+      window.localStorage.setItem('email', email);
       await getUser(json.access_token, email);
       setRequest(true);
       navigate('/conta');

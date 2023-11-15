@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import { UserStorage } from './userContext';
 import User from './Components/User/User';
 import ProtectedRoute from './Components/Helper/ProtectedRoute';
+import UserProfile from './Components/User/UserProfile';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Routes>
               <Route path="/*" element={<Home />} />
               <Route path="login/*" element={<Login />} />
+              <Route path="perfil/:user" element={<UserProfile />} />
               <Route
                 path="conta/*"
                 element={
