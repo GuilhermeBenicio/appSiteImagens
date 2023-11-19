@@ -10,6 +10,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [request, setRequest] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -44,6 +45,7 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
     setLogin(false);
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('email');
     navigate('/login');
   }, []);
 
@@ -90,6 +92,8 @@ export const UserStorage = ({ children }) => {
           loading,
           request,
           userLogout,
+          setEdit,
+          edit,
         }}
       >
         {children}

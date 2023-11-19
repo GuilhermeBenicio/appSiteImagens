@@ -1,0 +1,19 @@
+.textarea {
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem 0.8rem;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.textarea:focus {
+  outline: 0;
+}
+
+.containerEditComment {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.img {
+  cursor: pointer;
+}

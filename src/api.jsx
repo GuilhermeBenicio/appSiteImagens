@@ -140,6 +140,20 @@ export function CREATE_COMMENT(body, id, token) {
   };
 }
 
+export function PHOTO_EDIT_COMMENT(body, token, idComentario, idPost) {
+  return {
+    url: `${URL}comment/update/${idComentario}/post/${idPost}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
 export function POST_DELETE(id, token) {
   return {
     url: `${URL}post/remove/${id}`,

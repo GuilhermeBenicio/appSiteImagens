@@ -4,6 +4,8 @@ import { GET_POST_USER } from '../../api';
 import useFetch from '../../Hooks/useFetch';
 import FeedPhotosItem from './FeedPhotosItem';
 import styles from './FeedSeguindo.module.css';
+import FeedModal from './FeedModal';
+import Error from '../Helper/Error';
 
 const FeedSeguindo = () => {
   const { dataUser } = React.useContext(userContext);
@@ -11,6 +13,7 @@ const FeedSeguindo = () => {
   const token = window.localStorage.getItem('token');
 
   const [foto, setFoto] = React.useState([]);
+  const [modalPhoto, setModalPhoto] = React.useState(null);
 
   React.useEffect(() => {
     dataUser.seguindo.forEach((users) => {
@@ -24,12 +27,25 @@ const FeedSeguindo = () => {
   }, [request]);
 
   return (
-    <ul className={`${styles.feed} mainContainer animeLeft`}>
-      {foto &&
-        foto.map((obj) =>
-          obj.posts.map((url) => <FeedPhotosItem key={url._id} photo={url} />),
-        )}
-    </ul>
+    <>
+      {modalPhoto && (
+        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
+      )}
+
+      <ul className={`${styles.feed} mainContainer animeLeft`}>
+        {loading && 'Carregando...'}
+        {foto &&
+          foto.map((obj) =>
+            obj.posts.map((url) => (
+              <FeedPhotosItem
+                key={url._id}
+                photo={url}
+                setModalPhoto={setModalPhoto}
+              />
+            )),
+          )}
+      </ul>
+    </>
   );
 };
 

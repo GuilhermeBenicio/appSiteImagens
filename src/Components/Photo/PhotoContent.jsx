@@ -17,8 +17,8 @@ const PhotoContent = ({ data, setModalPhoto }) => {
     criadoEm,
     _id,
   } = data;
-  const dataFormatada = format(parseISO(criadoEm), 'dd/MM/yyyy');
   const { dataUser } = React.useContext(userContext);
+  const [comentario, setComentario] = React.useState(comentarios);
 
   return (
     <div className={styles.photo}>
@@ -39,12 +39,20 @@ const PhotoContent = ({ data, setModalPhoto }) => {
           ) : (
             <p className={styles.author}>
               <Link to={`/perfil/${usuario}`}>@{usuario}</Link>
-              <PhotoContentCurtida curtidas={curtidas} _id={_id} />
+              <PhotoContentCurtida
+                curtidas={curtidas}
+                _id={_id}
+                usuario={dataUser !== null && dataUser.usuario}
+              />
             </p>
           )}
           <p className={styles.descricaoPost}>{descricaoPost}</p>
         </div>
-        <PhotoComments id={_id} comments={comentarios} />
+        <PhotoComments
+          id={_id}
+          comments={comentario}
+          setModalPhoto={setModalPhoto}
+        />
       </div>
     </div>
   );

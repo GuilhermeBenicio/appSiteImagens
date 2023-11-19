@@ -21,7 +21,10 @@ const UserLogin = ({ setModalFoto }) => {
 
     const { url, options } = UPLOAD_PHOTO_POST(formData, token);
     const { response, json } = await request(url, options);
-    if (response.ok) await sendFinalPost(json.url, token, dataUser._id);
+    if (response.ok) {
+      await sendFinalPost(json.url, token, dataUser._id);
+      window.location.reload();
+    }
   }
 
   async function sendFinalPost(urlIMG, token, id) {

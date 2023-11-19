@@ -1,19 +1,14 @@
-.deletar {
-  cursor: pointer;
-}
-
-.deletar {
+.button {
   border: none;
   background: var(--rosa-claro);
   color: var(--branco-rosado);
   font-weight: bold;
-  padding: 0.5rem;
-  min-width: 6rem;
-  border-radius: 4px;
+  padding: 0 0.5rem;
   cursor: pointer;
   transition: 0.2s all;
+  font-size: 0.9rem;
 }
 
-.deletar:hover {
+.button:hover {
   background-color: var(--rosa-claro2);
 }

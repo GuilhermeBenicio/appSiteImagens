@@ -13,7 +13,6 @@ const UserSeguir = ({ user }) => {
 
   async function handleClick() {
     const { url, options } = USER_FOLLOW(dataUser.usuario, user, token);
-    console.log(url, options);
 
     const { response, json } = await request(url, options);
     if (response.ok) {

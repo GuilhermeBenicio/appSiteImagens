@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './PhotoCommentsForm.module.css';
 import { CREATE_COMMENT } from '../../api';
 import useFetch from '../../Hooks/useFetch';
+import enviar from '../../assets/enviar.svg';
 
 const PhotoCommentsForm = ({ usuario, id, setCommentsUser }) => {
   const [comments, setComments] = React.useState('');
@@ -37,7 +38,9 @@ const PhotoCommentsForm = ({ usuario, id, setCommentsUser }) => {
           placeholder="Comentário..."
         ></textarea>
       </div>
-      <button className={styles.button}>Enviar</button>
+      <button className={styles.button}>
+        <img src={enviar} alt="Enviar" />
+      </button>
     </form>
   );
 };
