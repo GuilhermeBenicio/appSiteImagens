@@ -9,7 +9,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <Link className={styles.logo} to="/">
-          <h1>Logotipo</h1>
+          <h1>TakePic</h1>
         </Link>
         {dataUser ? (
           <Link className={styles.login} to="/conta">
