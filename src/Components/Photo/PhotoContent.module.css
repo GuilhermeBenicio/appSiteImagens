@@ -64,15 +64,6 @@
   cursor: pointer;
 }
 
-.curtidas::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 0.5rem;
-  background: url('../../assets/like.svg');
-}
-
 @media (max-width: 64rem) {
   .photo {
     height: auto;
