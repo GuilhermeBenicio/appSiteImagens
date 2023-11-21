@@ -8,6 +8,7 @@ import { userContext } from '../../userContext';
 
 const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
   const [like, setLike] = React.useState(curtidas.length);
+  const [isLike, setIsLike] = React.useState(false);
   const { dataUser } = React.useContext(userContext);
   const { request } = useFetch();
   const token = window.localStorage.getItem('token');
@@ -24,8 +25,10 @@ const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
       console.log(json.tipo);
       if (json.tipo === 'like') {
         setLike(like + 1);
+        setIsLike(true);
       } else if (json.tipo === 'dislike') {
         setLike(like - 1);
+        setIsLike(false);
       }
     }
   }
@@ -34,7 +37,7 @@ const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
     <>
       {dataUser ? (
         <span className={styles.curtidas} onClick={handleClick}>
-          {like ? (
+          {isLike ? (
             <img
               src={coracaopreenchido}
               alt="Likes"
