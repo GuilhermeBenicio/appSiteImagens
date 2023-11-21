@@ -8,10 +8,15 @@ import { userContext } from '../../userContext';
 
 const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
   const [like, setLike] = React.useState(curtidas.length);
-  const [isLike, setIsLike] = React.useState(false);
+  const [isLike, setIsLike] = React.useState(() => {
+    // Verifica se o like está salvo no localStorage
+    const savedLike = window.localStorage.getItem(`like_${_id}`);
+    return savedLike ? JSON.parse(savedLike) : '';
+  });
   const { dataUser } = React.useContext(userContext);
   const { request } = useFetch();
   const token = window.localStorage.getItem('token');
+
   async function handleClick() {
     const { url, options } = POST_LIKE(
       {
@@ -22,7 +27,6 @@ const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
     );
     const { response, json } = await request(url, options);
     if (response.ok) {
-      console.log(json.tipo);
       if (json.tipo === 'like') {
         setLike(like + 1);
         setIsLike(true);
@@ -32,6 +36,11 @@ const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
       }
     }
   }
+
+  // Atualiza o localStorage quando o estado do like muda
+  React.useEffect(() => {
+    window.localStorage.setItem(`like_${_id}`, JSON.stringify(isLike));
+  }, [isLike, _id]);
 
   return (
     <>

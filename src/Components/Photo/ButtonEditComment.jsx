@@ -25,7 +25,6 @@ const ButtonEditComment = ({
     const { response, json } = await request(url, options);
     if (response.ok) {
       setEdit(false);
-      console.log(json);
       setModalPhoto(false);
       setTimeout(() => {
         setModalPhoto(json);
