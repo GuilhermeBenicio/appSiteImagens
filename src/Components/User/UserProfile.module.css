@@ -6,6 +6,22 @@
   padding: 1rem 0.5rem;
 }
 
+.userFollower {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  background-color: #f4f4f4;
+  padding: 1rem;
+}
+
+.seguidor,
+.seguindo,
+.posts {
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
 .fieldset {
   border-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
