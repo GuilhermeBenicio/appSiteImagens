@@ -11,7 +11,7 @@ const PhotoContentCurtida = ({ curtidas, usuario, _id }) => {
   const { dataUser } = React.useContext(userContext);
   const [like, setLike] = React.useState(curtidas.length);
   const [islike, setIsLike] = React.useState(() =>
-    curtidasArray.includes(dataUser.usuario),
+    curtidasArray.includes(dataUser !== null && dataUser.usuario),
   );
 
   const { request } = useFetch();

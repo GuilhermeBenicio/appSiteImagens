@@ -27,24 +27,29 @@ const UserProfile = () => {
         <h1 className="titulo">{user}</h1>
         <div>{dataUser !== null && <UserSeguir user={user} />}</div>
       </div>
-      <div className={styles.userFollower}>
-        {data && (
-          <>
-            <span>
-              <span className={styles.posts}> {data.posts.length}</span>
-              post{data.posts.length > 1 ? 's' : null}
-            </span>
-            <span>
-              <span className={styles.seguidor}> {data.seguidores.length}</span>
-              seguidor{data.seguidores.length > 1 ? 'es' : null}
-            </span>
-            <span>
-              <span className={styles.seguindo}> {data.seguindo.length}</span>
-              seguindo
-            </span>
-          </>
-        )}
-      </div>
+      {dataUser === null ? null : (
+        <div className={styles.userFollower}>
+          {data && (
+            <>
+              <span>
+                <span className={styles.posts}> {data.posts.length}</span>
+                post{data.posts.length > 1 ? 's' : null}
+              </span>
+              <span>
+                <span className={styles.seguidor}>
+                  {' '}
+                  {data.seguidores.length}
+                </span>
+                seguidor{data.seguidores.length > 1 ? 'es' : null}
+              </span>
+              <span>
+                <span className={styles.seguindo}> {data.seguindo.length}</span>
+                seguindo
+              </span>
+            </>
+          )}
+        </div>
+      )}
       <FeedUser user={user} />
     </section>
   );
